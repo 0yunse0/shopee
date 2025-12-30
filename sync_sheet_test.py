@@ -20,7 +20,7 @@ service = build("sheets", "v4", credentials=creds)
 
 # 3. 시트 정보
 SPREADSHEET_ID = "1BF-AIj7KMYGYnOiTEaWQRO_EcXkOYDiEyz-Rl80jwt4"
-SHEET_NAME = "SG_Sales"  # 실제 시트 이름과 동일해야 함
+SHEET_NAME = "SG_Sales"  # 실제 시트 탭 이름과 정확히 동일
 
 # 4. 입력할 테스트 데이터
 now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -35,10 +35,9 @@ values = [[
 # 5. 시트에 append
 service.spreadsheets().values().append(
     spreadsheetId=SPREADSHEET_ID,
-    range=f"{SG_Sales}!A1",
+    range=f"{SHEET_NAME}!A1",
     valueInputOption="USER_ENTERED",
     body={"values": values}
 ).execute()
 
 print("✅ Sheet write success")
- 
