@@ -1,6 +1,6 @@
 {
   "spreadsheet_id": "1BF-AIj7KMYGYnOiTEaWQRO_EcXkOYDiEyz-Rl80jwt4",
-  "google_service_account_json": "google.json",
+  "google_service_account_json": "service_account.json",
 
   "session_file": "shopee_session.json",
 
