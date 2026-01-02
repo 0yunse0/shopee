@@ -1,0 +1,32 @@
+name: Shopee Export to Google Sheets (Manual)
+
+on:
+  workflow_dispatch:   # 👈 버튼 실행 전용
+
+jobs:
+  run-export:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pandas gspread google-auth openpyxl
+
+      - name: Create service account file
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          echo "$GOOGLE_SERVICE_ACCOUNT_JSON" > service_account.json
+
+      - name: Run Shopee Export Script
+        run: |
+          python shopee_export_to_sheets.py
