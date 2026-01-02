@@ -1,0 +1,37 @@
+{
+  "spreadsheet_id": "1BF-AIj7KMYGYnOiTEaWQRO_EcXkOYDiEyz-Rl80jwt4",
+  "google_service_account_json": "google.json",
+
+  "session_file": "shopee_session.json",
+
+  "accounts": [
+    {
+      "key": "SG",
+      "shop_id": 10228730,
+      "tab": "SG_Sales",
+      "market_base": "https://seller.shopee.sg",
+      "order_rule": "PAID"
+    },
+    {
+      "key": "MY",
+      "shop_id": 1175372579,
+      "tab": "MY_Sales",
+      "market_base": "https://seller.shopee.com.my",
+      "order_rule": "CONFIRMED"
+    },
+    {
+      "key": "PH_DK",
+      "shop_id": 332749547,
+      "tab": "PH_DK_Sales",
+      "market_base": "https://seller.shopee.ph",
+      "order_rule": "CONFIRMED"
+    },
+    {
+      "key": "PH_IF",
+      "shop_id": 1316047237,
+      "tab": "PH_IF_Sales",
+      "market_base": "https://seller.shopee.ph",
+      "order_rule": "CONFIRMED"
+    }
+  ]
+}
