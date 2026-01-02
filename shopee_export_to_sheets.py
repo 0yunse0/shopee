@@ -72,7 +72,15 @@ def ensure_session(login_base):
 
     print("[LOGIN] 세션 없음 → 브라우저 열림 (직접 로그인/2FA)")
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(
+            headless=True,
+            args=[
+                "--no-sandbox",
+                "--disable-dev-shm-usage",
+                "--disable-gpu",
+    ]
+)
+
         context = browser.new_context()
         page = context.new_page()
 
