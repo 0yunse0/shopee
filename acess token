@@ -1,0 +1,34 @@
+import time
+import hmac
+import hashlib
+import requests
+
+PARTNER_ID = 2014535   # Live Partner ID
+PARTNER_KEY = "YOUR_LIVE_PARTNER_KEY"
+SHOP_ID = 123456789   # 실제 shop_id
+CODE = "AUTHORIZATION_CODE_FROM_URL"  # redirect_url에 붙은 code
+
+timestamp = int(time.time())
+
+base_string = f"{PARTNER_ID}/api/v2/auth/token/get{timestamp}"
+sign = hmac.new(
+    PARTNER_KEY.encode(),
+    base_string.encode(),
+    hashlib.sha256
+).hexdigest()
+
+url = "https://partner.shopeemobile.com/api/v2/auth/token/get"
+
+params = {
+    "partner_id": PARTNER_ID,
+    "timestamp": timestamp,
+    "sign": sign
+}
+
+body = {
+    "shop_id": SHOP_ID,
+    "code": CODE
+}
+
+res = requests.post(url, params=params, json=body)
+print(res.json())
